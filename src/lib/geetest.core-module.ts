@@ -41,7 +41,9 @@ export class GeetestCoreModule {
     return [
       this.createAsyncOptionsProvider(options),
       {
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         provide: options.useClass!,
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         useClass: options.useClass!,
       },
     ];
@@ -62,7 +64,8 @@ export class GeetestCoreModule {
       provide: GEETEST_OPTIONS,
       useFactory: async (optionsFactory: GeetestOptionsFactory) =>
         await optionsFactory.createGeetestOptions(),
-      inject: [options.useExisting! || options.useClass!],
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      inject: [options.useExisting || options.useClass!],
     };
   }
 }
