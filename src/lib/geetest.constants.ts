@@ -1,0 +1,1 @@
+export const GEETEST_OPTIONS = 'GEETEST_OPTIONS'
