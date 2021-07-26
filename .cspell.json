@@ -23,7 +23,10 @@
     "typedoc",
     "untracked",
     "nestjs",
-    "geetest"
+    "geetest",
+    "seccode",
+    "digestmod",
+    "Seccode"
   ],
   "flagWords": [],
   "ignorePaths": [
