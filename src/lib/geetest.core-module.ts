@@ -1,16 +1,34 @@
-import { DynamicModule, Global, Module, Provider } from '@nestjs/common';
+import { HttpModule } from '@nestjs/axios';
+import {
+  DynamicModule,
+  Global,
+  Module,
+  OnApplicationBootstrap,
+  OnApplicationShutdown,
+  Provider,
+} from '@nestjs/common';
+import { ModuleRef } from '@nestjs/core';
 
 import { GEETEST_OPTIONS } from './geetest.constants';
-import { GeetestAsyncOptions } from './interfaces/geetest-async-options.interface';
-import { GeetestOptionsFactory } from './interfaces/geetest-options-factory.interface';
-import { GeetestOptions } from './interfaces/geetest-options.interface';
-import { GeetestService } from './services/geetest.service';
+import {
+  GeetestAsyncOptions,
+  GeetestOptions,
+  GeetestOptionsFactory,
+} from './interfaces';
+import { BypassStatusProvider, GeetestOptionsProvider } from './providers';
+import { BypassPollingService, GeetestService } from './services';
 
 @Global()
 @Module({
-  imports: [],
+  imports: [HttpModule],
 })
-export class GeetestCoreModule {
+export class GeetestCoreModule
+  implements OnApplicationBootstrap, OnApplicationShutdown
+{
+  constructor(private readonly moduleRef: ModuleRef) {
+    console.log(moduleRef);
+  }
+
   static forRoot(options: GeetestOptions): DynamicModule {
     return {
       module: GeetestCoreModule,
@@ -19,15 +37,26 @@ export class GeetestCoreModule {
           provide: GEETEST_OPTIONS,
           useValue: options,
         },
+        GeetestService,
+        GeetestOptionsProvider,
+        BypassStatusProvider,
+        BypassPollingService,
       ],
       exports: [GeetestService],
     };
   }
+
   static forRootAsync(options: GeetestAsyncOptions): DynamicModule {
     return {
       module: GeetestCoreModule,
       imports: options.imports || [],
-      providers: this.createAsyncProviders(options),
+      providers: [
+        ...this.createAsyncProviders(options),
+        GeetestService,
+        GeetestOptionsProvider,
+        BypassStatusProvider,
+        BypassPollingService,
+      ],
     };
   }
 
@@ -68,4 +97,16 @@ export class GeetestCoreModule {
       inject: [options.useExisting || options.useClass!],
     };
   }
+
+  onApplicationBootstrap = () => {
+    this.moduleRef
+      .get<BypassPollingService>(BypassPollingService)
+      .startPolling();
+  };
+
+  onApplicationShutdown = () => {
+    this.moduleRef
+      .get<BypassPollingService>(BypassPollingService)
+      .stopPolling();
+  };
 }

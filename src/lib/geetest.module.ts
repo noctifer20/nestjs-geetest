@@ -1,8 +1,7 @@
 import { DynamicModule, Module } from '@nestjs/common';
 
 import { GeetestCoreModule } from './geetest.core-module';
-import { GeetestAsyncOptions } from './interfaces/geetest-async-options.interface';
-import { GeetestOptions } from './interfaces/geetest-options.interface';
+import { GeetestAsyncOptions, GeetestOptions } from './interfaces';
 
 @Module({})
 export class GeetestModule {

@@ -3,17 +3,17 @@
 import * as Crypto from 'crypto';
 
 import { HttpService } from '@nestjs/axios';
-import { Inject, Logger } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import qs from 'qs';
 import { lastValueFrom } from 'rxjs';
 
-import { GEETEST_OPTIONS } from '../geetest.constants';
-import { GeetestOptions } from '../interfaces/geetest-options.interface';
 import { GeetestRegisterParamsInterface } from '../interfaces/geetest-register-params.interface';
 import { GeetestRegisterResponseInterface } from '../interfaces/geetest-register-response.interface';
 import { GeetestRegisterResultInterface } from '../interfaces/geetest-register-result.interface';
 import { GeetestValidateResponseInterface } from '../interfaces/geetest-validate-response.interface';
+import { GeetestOptionsProvider } from '../providers/geetest-options.provider';
 
+@Injectable()
 export class GeetestService {
   static API_URL = 'http://api.geetest.com';
   static REGISTER_URL = '/register.php';
@@ -22,16 +22,12 @@ export class GeetestService {
   static NEW_CAPTCHA = true;
   static HTTP_TIMEOUT_DEFAULT = 5000;
   static VERSION = 'node-express:3.1.1';
-  static GEETEST_CHALLENGE = 'geetest_challenge';
-  static GEETEST_VALIDATE = 'geetest_validate';
-  static GEETEST_SECCODE = 'geetest_seccode';
-  static GEETEST_SERVER_STATUS_SESSION_KEY = 'gt_server_status';
+
+  private readonly logger = new Logger();
 
   constructor(
-    @Inject(GEETEST_OPTIONS)
-    private readonly geetestOptions: GeetestOptions,
-    private logger: Logger,
-    private httpService: HttpService
+    private readonly geetestOptionsProvider: GeetestOptionsProvider,
+    private readonly httpService: HttpService
   ) {}
 
   public async register(params: GeetestRegisterParamsInterface) {
@@ -58,7 +54,7 @@ export class GeetestService {
       json_format: GeetestService.JSON_FORMAT,
       challenge: challenge,
       sdk: GeetestService.VERSION,
-      captchaid: this.geetestOptions.GEETEST_ID,
+      captchaid: this.geetestOptionsProvider.options.GEETEST_ID,
     });
     const validate_url = GeetestService.API_URL + GeetestService.VALIDATE_URL;
 
@@ -165,7 +161,7 @@ export class GeetestService {
         status: 0,
         data: {
           success: 0,
-          gt: this.geetestOptions.GEETEST_ID,
+          gt: this.geetestOptionsProvider.options.GEETEST_ID,
           challenge: challenge,
           new_captcha: GeetestService.NEW_CAPTCHA,
         },
@@ -173,7 +169,7 @@ export class GeetestService {
       };
     } else {
       const challenge = GeetestService.encode(
-        originChallenge + this.geetestOptions.GEETEST_KEY,
+        originChallenge + this.geetestOptionsProvider.options.GEETEST_KEY,
         digestmod
       );
 
@@ -181,7 +177,7 @@ export class GeetestService {
         status: 1,
         data: {
           success: 1,
-          gt: this.geetestOptions.GEETEST_ID,
+          gt: this.geetestOptionsProvider.options.GEETEST_ID,
           challenge: challenge,
           new_captcha: GeetestService.NEW_CAPTCHA,
         },
@@ -232,7 +228,7 @@ export class GeetestService {
   }
 
   private log(message: string) {
-    if (this.geetestOptions.DEBUG) {
+    if (this.geetestOptionsProvider.options.DEBUG) {
       this.logger.debug(message);
     }
   }
