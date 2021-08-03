@@ -1,4 +1,4 @@
-export interface GeetestOptions {
+export interface GeetestModuleOptions {
   GEETEST_ID: string;
   GEETEST_KEY: string;
 

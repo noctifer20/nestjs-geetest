@@ -11,8 +11,8 @@ import { ModuleRef } from '@nestjs/core';
 
 import { GEETEST_OPTIONS } from './geetest.constants';
 import {
-  GeetestAsyncOptions,
-  GeetestOptions,
+  GeetestModuleAsyncOptions,
+  GeetestModuleOptions,
   GeetestOptionsFactory,
 } from './interfaces';
 import { BypassStatusProvider, GeetestOptionsProvider } from './providers';
@@ -25,11 +25,9 @@ import { BypassPollingService, GeetestService } from './services';
 export class GeetestCoreModule
   implements OnApplicationBootstrap, OnApplicationShutdown
 {
-  constructor(private readonly moduleRef: ModuleRef) {
-    console.log(moduleRef);
-  }
+  constructor(private readonly moduleRef: ModuleRef) {}
 
-  static forRoot(options: GeetestOptions): DynamicModule {
+  static forRoot(options: GeetestModuleOptions): DynamicModule {
     return {
       module: GeetestCoreModule,
       providers: [
@@ -46,7 +44,7 @@ export class GeetestCoreModule
     };
   }
 
-  static forRootAsync(options: GeetestAsyncOptions): DynamicModule {
+  static forRootAsync(options: GeetestModuleAsyncOptions): DynamicModule {
     return {
       module: GeetestCoreModule,
       imports: options.imports || [],
@@ -61,7 +59,7 @@ export class GeetestCoreModule
   }
 
   private static createAsyncProviders(
-    options: GeetestAsyncOptions
+    options: GeetestModuleAsyncOptions
   ): Provider[] {
     if (options.useExisting || options.useFactory) {
       return [this.createAsyncOptionsProvider(options)];
@@ -79,7 +77,7 @@ export class GeetestCoreModule
   }
 
   private static createAsyncOptionsProvider(
-    options: GeetestAsyncOptions
+    options: GeetestModuleAsyncOptions
   ): Provider {
     if (options.useFactory) {
       return {

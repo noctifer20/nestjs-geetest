@@ -1,5 +1,5 @@
-import { GeetestOptions } from './geetest-options.interface';
+import { GeetestModuleOptions } from './geetest-module-options.interface';
 
 export interface GeetestOptionsFactory {
-  createGeetestOptions(): Promise<GeetestOptions> | GeetestOptions;
+  createGeetestOptions(): Promise<GeetestModuleOptions> | GeetestModuleOptions;
 }

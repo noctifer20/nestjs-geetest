@@ -14,13 +14,7 @@ export class BypassPollingService {
     private readonly geetestOptionsProvider: GeetestOptionsProvider,
     private readonly bypassStatusProvider: BypassStatusProvider,
     private readonly httpService: HttpService
-  ) {
-    console.log(
-      'gt-----------BypassPollingService',
-      geetestOptionsProvider,
-      bypassStatusProvider
-    );
-  }
+  ) {}
 
   async startPolling() {
     this.pollingInterval = interval(

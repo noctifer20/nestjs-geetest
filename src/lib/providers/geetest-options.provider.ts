@@ -1,16 +1,16 @@
 import { Inject, Injectable } from '@nestjs/common';
 
 import { GEETEST_OPTIONS } from '../geetest.constants';
-import { GeetestOptions } from '../interfaces';
+import { GeetestModuleOptions } from '../interfaces';
 
 @Injectable()
 export class GeetestOptionsProvider {
-  public readonly options: GeetestOptions;
+  public readonly options: Required<GeetestModuleOptions>;
 
-  constructor(@Inject(GEETEST_OPTIONS) geetestOptions: GeetestOptions) {
+  constructor(@Inject(GEETEST_OPTIONS) geetestOptions: GeetestModuleOptions) {
     this.options = {
-      BYPASS_URL: 'http://bypass.geetest.com/v1/bypass_status.php',
-      API_SERVER: 'http://api.geetest.com',
+      BYPASS_URL: 'https://bypass.geetest.com/v1/bypass_status.php',
+      API_SERVER: 'https://api.geetest.com',
       REGISTER_URL: '/register.php',
       VALIDATE_URL: '/validate.php',
       JSON_FORMAT: '1',

@@ -7,17 +7,16 @@ import { Injectable, Logger } from '@nestjs/common';
 import qs from 'qs';
 import { lastValueFrom } from 'rxjs';
 
-import { GeetestRegisterParamsInterface } from '../interfaces/geetest-register-params.interface';
-import { GeetestRegisterResponseInterface } from '../interfaces/geetest-register-response.interface';
-import { GeetestRegisterResultInterface } from '../interfaces/geetest-register-result.interface';
-import { GeetestValidateResponseInterface } from '../interfaces/geetest-validate-response.interface';
-import { GeetestOptionsProvider } from '../providers/geetest-options.provider';
+import {
+  GeetestRegisterParamsInterface,
+  GeetestRegisterResponseInterface,
+  GeetestRegisterResultInterface,
+  GeetestValidateResponseInterface,
+} from '../interfaces';
+import { BypassStatusProvider, GeetestOptionsProvider } from '../providers';
 
 @Injectable()
 export class GeetestService {
-  static API_URL = 'http://api.geetest.com';
-  static REGISTER_URL = '/register.php';
-  static VALIDATE_URL = '/validate.php';
   static JSON_FORMAT = '1';
   static NEW_CAPTCHA = true;
   static HTTP_TIMEOUT_DEFAULT = 5000;
@@ -27,11 +26,28 @@ export class GeetestService {
 
   constructor(
     private readonly geetestOptionsProvider: GeetestOptionsProvider,
-    private readonly httpService: HttpService
+    private readonly httpService: HttpService,
+    private readonly bypassStatusProvider: BypassStatusProvider
   ) {}
 
+  private static randomString(size = 21) {
+    return Crypto.randomBytes(size).toString('base64').slice(0, size);
+  }
+
+  private static encode(
+    str: string,
+    encoding: GeetestRegisterParamsInterface['digestmod']
+  ) {
+    return Crypto.createHash(encoding).update(str).digest().toString('hex');
+  }
+
   public async register(params: GeetestRegisterParamsInterface) {
-    this.log(`register(): 开始验证初始化, digestmod=${params.digestmod}.`);
+    this.log(
+      `register(): digestmod=${params.digestmod} bypassStatus=${this.bypassStatusProvider.bypassStatus}`
+    );
+
+    if (this.bypassStatusProvider.bypassStatus === 'fail')
+      return this.localRegister();
 
     const originChallenge = await this.requestRegister(params);
     const libResult = this.buildRegisterResult(
@@ -39,8 +55,15 @@ export class GeetestService {
       params.digestmod
     );
 
-    this.log(`register(): 验证初始化, lib包返回信息=${libResult}.`);
+    this.log(`register(): libResult=${libResult}.`);
 
+    return libResult;
+  }
+
+  async localRegister() {
+    this.log('localRegister() ');
+    const libResult = this.buildRegisterResult('', 'md5');
+    this.log(`register(): libResult=${libResult}.`);
     return libResult;
   }
 
@@ -56,10 +79,12 @@ export class GeetestService {
       sdk: GeetestService.VERSION,
       captchaid: this.geetestOptionsProvider.options.GEETEST_ID,
     });
-    const validate_url = GeetestService.API_URL + GeetestService.VALIDATE_URL;
+    const validate_url =
+      this.geetestOptionsProvider.options.API_SERVER +
+      this.geetestOptionsProvider.options.VALIDATE_URL;
 
     this.log(
-      `requestValidate(): 二次验证 正常模式, 向极验发送请求, url=${validate_url}, params=${JSON.stringify(
+      `requestValidate(): url=${validate_url}, params=${JSON.stringify(
         params
       )}.`
     );
@@ -78,14 +103,14 @@ export class GeetestService {
       const resBody = response.status === 200 ? response.data : { seccode: '' };
 
       this.log(
-        `requestValidate(): 二次验证 正常模式, 与极验网络交互正常, 返回码=${
+        `requestValidate(): response.status=${
           response.status
-        }, 返回body=${JSON.stringify(resBody)}.`
+        }, response.body=${JSON.stringify(resBody)}.`
       );
 
       responseSeccode = resBody.seccode;
     } catch (e) {
-      this.log('requestValidate(): 二次验证 正常模式, 请求异常, ' + e.message);
+      this.log('requestValidate(): error, ' + e.message);
       responseSeccode = '';
     }
     return responseSeccode;
@@ -98,13 +123,13 @@ export class GeetestService {
     params: GeetestRegisterParamsInterface
   ): Promise<GeetestRegisterResultInterface> {
     this.log(
-      `successValidate(): 开始二次验证 正常模式, challenge=${challenge}, validate=${validate}, seccode=${validate}.`
+      `successValidate(): challenge=${challenge}, validate=${validate}, seccode=${validate}.`
     );
     if (!this.checkParam(challenge, validate, seccode)) {
       return {
         status: 0,
         data: '',
-        msg: '正常模式，本地校验，参数challenge、validate、seccode不可为空',
+        msg: 'challenge、validate、seccode',
       };
     }
     const responseSeccode = await this.requestValidate(
@@ -116,13 +141,13 @@ export class GeetestService {
       return {
         status: 0,
         data: '',
-        msg: '请求极验validate接口失败',
+        msg: 'validate',
       };
     } else if (responseSeccode === 'false') {
       return {
         status: 0,
         data: '',
-        msg: '极验二次验证不通过',
+        msg: 'Failed to verify the seccode',
       };
     }
     return { status: 1, data: '', msg: '' };
@@ -137,17 +162,6 @@ export class GeetestService {
       seccode == undefined ||
       seccode.trim() === ''
     );
-  }
-
-  private static randomString(size = 21) {
-    return Crypto.randomBytes(size).toString('base64').slice(0, size);
-  }
-
-  private static encode(
-    str: string,
-    encoding: GeetestRegisterParamsInterface['digestmod']
-  ) {
-    return Crypto.createHash(encoding).update(str).digest().toString('hex');
   }
 
   private buildRegisterResult(
@@ -187,12 +201,12 @@ export class GeetestService {
   }
 
   private async requestRegister(params: GeetestRegisterParamsInterface) {
-    const registerUrl = GeetestService.API_URL + GeetestService.REGISTER_URL;
+    const registerUrl =
+      this.geetestOptionsProvider.options.API_SERVER +
+      this.geetestOptionsProvider.options.REGISTER_URL;
 
     this.log(
-      `requestRegister(): 验证初始化, 向极验发送请求, url=${registerUrl}, params=${JSON.stringify(
-        params
-      )}.`
+      `requestRegister(): url=${registerUrl}, params=${JSON.stringify(params)}.`
     );
 
     let originChallenge;
@@ -202,7 +216,10 @@ export class GeetestService {
           url: registerUrl,
           method: 'GET',
           timeout: GeetestService.HTTP_TIMEOUT_DEFAULT,
-          params,
+          params: {
+            ...params,
+            gt: this.geetestOptionsProvider.options.GEETEST_ID,
+          },
         });
 
       const response = await lastValueFrom(request);

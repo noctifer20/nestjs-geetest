@@ -1,11 +1,11 @@
 import { DynamicModule, Module } from '@nestjs/common';
 
 import { GeetestCoreModule } from './geetest.core-module';
-import { GeetestAsyncOptions, GeetestOptions } from './interfaces';
+import { GeetestModuleAsyncOptions, GeetestModuleOptions } from './interfaces';
 
 @Module({})
 export class GeetestModule {
-  static forRoot(options: GeetestOptions): DynamicModule {
+  static forRoot(options: GeetestModuleOptions): DynamicModule {
     return {
       module: GeetestModule,
       imports: [GeetestCoreModule.forRoot(options)],
@@ -13,7 +13,7 @@ export class GeetestModule {
     };
   }
 
-  static forRootAsync(options: GeetestAsyncOptions): DynamicModule {
+  static forRootAsync(options: GeetestModuleAsyncOptions): DynamicModule {
     return {
       module: GeetestModule,
       imports: [GeetestCoreModule.forRootAsync(options)],
