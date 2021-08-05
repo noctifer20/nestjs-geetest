@@ -55,7 +55,7 @@ export class GeetestService {
       params.digestmod
     );
 
-    this.log(`register(): libResult=${libResult}.`);
+    this.log(`register(): libResult=${JSON.stringify(libResult)}.`);
 
     return libResult;
   }
