@@ -514,6 +514,14 @@
     tslib "2.3.0"
     uuid "8.3.2"
 
+"@nestjs/testing@^8.0.6":
+  version "8.0.6"
+  resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-8.0.6.tgz#c6f160ce9ced24f00c653d5a284dc35dd5162dd8"
+  integrity sha512-HRXGM5RlGa+o+kxWI9DQCALndSvL3Remjg1cZVFp2w2s5eXRPpiFMo9puXtu9DSc4tz78xYcQGmEaeYNTB7gvg==
+  dependencies:
+    optional "0.1.4"
+    tslib "2.3.0"
+
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz#7619c2eb21b25483f6d167548b4cfd5a7488c3d5"
@@ -4108,6 +4116,11 @@ open@^7.0.3:
   dependencies:
     is-docker "^2.0.0"
     is-wsl "^2.1.1"
+
+optional@0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/optional/-/optional-0.1.4.tgz#cdb1a9bedc737d2025f690ceeb50e049444fd5b3"
+  integrity sha512-gtvrrCfkE08wKcgXaVwQVgwEQ8vel2dc5DDBn9RLQZ3YtmtkBss6A2HY6BnJH4N/4Ku97Ri/SF8sNWE2225WJw==
 
 optionator@^0.9.1:
   version "0.9.1"

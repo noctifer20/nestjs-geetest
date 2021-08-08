@@ -41,6 +41,21 @@ export class GeetestService {
     return Crypto.createHash(encoding).update(str).digest().toString('hex');
   }
 
+  private static checkParam(
+    challenge: string,
+    validate: string,
+    seccode: string
+  ) {
+    return !(
+      challenge == undefined ||
+      challenge.trim() === '' ||
+      validate == undefined ||
+      validate.trim() === '' ||
+      seccode == undefined ||
+      seccode.trim() === ''
+    );
+  }
+
   public async register(params: GeetestRegisterParamsInterface) {
     this.log(
       `register(): digestmod=${params.digestmod} bypassStatus=${this.bypassStatusProvider.bypassStatus}`
@@ -60,14 +75,86 @@ export class GeetestService {
     return libResult;
   }
 
-  async localRegister() {
+  public async validate(
+    challenge: string,
+    validate: string,
+    seccode: string,
+    params: GeetestRegisterParamsInterface
+  ) {
+    if (this.bypassStatusProvider.bypassStatus === 'success') {
+      return this.successValidate(challenge, validate, seccode, params);
+    } else {
+      return this.failValidate(challenge, validate, seccode);
+    }
+  }
+
+  private async successValidate(
+    challenge: string,
+    validate: string,
+    seccode: string,
+    params: GeetestRegisterParamsInterface
+  ): Promise<GeetestRegisterResultInterface> {
+    this.log(
+      `successValidate(): challenge=${challenge}, validate=${validate}, seccode=${validate}.`
+    );
+    if (!GeetestService.checkParam(challenge, validate, seccode)) {
+      return {
+        status: 0,
+        data: '',
+        msg: 'challenge、validate、seccode',
+      };
+    }
+    const responseSeccode = await this.requestValidate(
+      challenge,
+      seccode,
+      params
+    );
+    if (!responseSeccode) {
+      return {
+        status: 0,
+        data: '',
+        msg: 'validate',
+      };
+    } else if (responseSeccode === 'false') {
+      return {
+        status: 0,
+        data: '',
+        msg: 'Failed to verify the seccode',
+      };
+    }
+    return { status: 1, data: '', msg: '' };
+  }
+
+  private failValidate(challenge: string, validate: string, seccode: string) {
+    this.log(
+      `failValidate(): challenge=${challenge}, validate=${validate}, seccode=${seccode}.`
+    );
+    let libResult: GeetestRegisterResultInterface;
+    if (!GeetestService.checkParam(challenge, validate, seccode)) {
+      libResult = {
+        status: 0,
+        data: '',
+        msg: 'Challenge Validate',
+      };
+    } else {
+      libResult = {
+        status: 1,
+        data: '',
+        msg: '',
+      };
+    }
+    this.log(`failValidate(): libResult=${JSON.stringify(libResult)}.`);
+    return libResult;
+  }
+
+  private async localRegister() {
     this.log('localRegister() ');
     const libResult = this.buildRegisterResult('', 'md5');
     this.log(`register(): libResult=${libResult}.`);
     return libResult;
   }
 
-  async requestValidate(
+  private async requestValidate(
     challenge: string,
     seccode: string,
     params: GeetestRegisterParamsInterface
@@ -114,54 +201,6 @@ export class GeetestService {
       responseSeccode = '';
     }
     return responseSeccode;
-  }
-
-  async successValidate(
-    challenge: string,
-    validate: string,
-    seccode: string,
-    params: GeetestRegisterParamsInterface
-  ): Promise<GeetestRegisterResultInterface> {
-    this.log(
-      `successValidate(): challenge=${challenge}, validate=${validate}, seccode=${validate}.`
-    );
-    if (!this.checkParam(challenge, validate, seccode)) {
-      return {
-        status: 0,
-        data: '',
-        msg: 'challenge、validate、seccode',
-      };
-    }
-    const responseSeccode = await this.requestValidate(
-      challenge,
-      seccode,
-      params
-    );
-    if (!responseSeccode) {
-      return {
-        status: 0,
-        data: '',
-        msg: 'validate',
-      };
-    } else if (responseSeccode === 'false') {
-      return {
-        status: 0,
-        data: '',
-        msg: 'Failed to verify the seccode',
-      };
-    }
-    return { status: 1, data: '', msg: '' };
-  }
-
-  private checkParam(challenge: string, validate: string, seccode: string) {
-    return !(
-      challenge == undefined ||
-      challenge.trim() === '' ||
-      validate == undefined ||
-      validate.trim() === '' ||
-      seccode == undefined ||
-      seccode.trim() === ''
-    );
   }
 
   private buildRegisterResult(

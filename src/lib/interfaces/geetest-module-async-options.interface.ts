@@ -4,9 +4,12 @@ import { FactoryProvider } from '@nestjs/common/interfaces/modules/provider.inte
 import { GeetestModuleOptions } from './geetest-module-options.interface';
 import { GeetestOptionsFactory } from './geetest-options-factory.interface';
 
-export interface GeetestModuleAsyncOptions extends Pick<ModuleMetadata, 'imports'> {
+export interface GeetestModuleAsyncOptions
+  extends Pick<ModuleMetadata, 'imports'> {
   inject?: FactoryProvider['inject'];
   useExisting?: Type<GeetestOptionsFactory>;
   useClass?: Type<GeetestOptionsFactory>;
-  useFactory?: (...args: unknown[]) => Promise<GeetestModuleOptions> | GeetestModuleOptions;
+  useFactory?: (
+    ...args: unknown[]
+  ) => Promise<GeetestModuleOptions> | GeetestModuleOptions;
 }

@@ -55,6 +55,7 @@ export class GeetestCoreModule
         BypassStatusProvider,
         BypassPollingService,
       ],
+      exports: [GeetestService],
     };
   }
 
