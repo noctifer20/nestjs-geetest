@@ -87,15 +87,13 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="geetestservice.html#bypassstatusprovider" class="tsd-kind-icon">bypass<wbr>Status<wbr>Provider</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="geetestservice.html#geetestoptionsprovider" class="tsd-kind-icon">geetest<wbr>Options<wbr>Provider</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="geetestservice.html#httpservice" class="tsd-kind-icon">http<wbr>Service</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="geetestservice.html#logger" class="tsd-kind-icon">logger</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="geetestservice.html#api_url" class="tsd-kind-icon">API_<wbr>URL</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="geetestservice.html#http_timeout_default" class="tsd-kind-icon">HTTP_<wbr>TIMEOUT_<wbr>DEFAULT</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="geetestservice.html#json_format" class="tsd-kind-icon">JSON_<wbr>FORMAT</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="geetestservice.html#new_captcha" class="tsd-kind-icon">NEW_<wbr>CAPTCHA</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="geetestservice.html#register_url" class="tsd-kind-icon">REGISTER_<wbr>URL</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="geetestservice.html#validate_url" class="tsd-kind-icon">VALIDATE_<wbr>URL</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="geetestservice.html#version" class="tsd-kind-icon">VERSION</a></li>
 							</ul>
 						</section>
@@ -103,12 +101,15 @@
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="geetestservice.html#buildregisterresult" class="tsd-kind-icon">build<wbr>Register<wbr>Result</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="geetestservice.html#checkparam" class="tsd-kind-icon">check<wbr>Param</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="geetestservice.html#failvalidate" class="tsd-kind-icon">fail<wbr>Validate</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="geetestservice.html#localregister" class="tsd-kind-icon">local<wbr>Register</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="geetestservice.html#log" class="tsd-kind-icon">log</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="geetestservice.html#register" class="tsd-kind-icon">register</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="geetestservice.html#requestregister" class="tsd-kind-icon">request<wbr>Register</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="geetestservice.html#requestvalidate" class="tsd-kind-icon">request<wbr>Validate</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="geetestservice.html#successvalidate" class="tsd-kind-icon">success<wbr>Validate</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="geetestservice.html#requestvalidate" class="tsd-kind-icon">request<wbr>Validate</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="geetestservice.html#successvalidate" class="tsd-kind-icon">success<wbr>Validate</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="geetestservice.html#validate" class="tsd-kind-icon">validate</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="geetestservice.html#checkparam" class="tsd-kind-icon">check<wbr>Param</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="geetestservice.html#encode" class="tsd-kind-icon">encode</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="geetestservice.html#randomstring" class="tsd-kind-icon">random<wbr>String</a></li>
 							</ul>
@@ -122,13 +123,13 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Geetest<wbr>Service<span class="tsd-signature-symbol">(</span>geetestOptionsProvider<span class="tsd-signature-symbol">: </span><a href="geetestoptionsprovider.html" class="tsd-signature-type">GeetestOptionsProvider</a>, httpService<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HttpService</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="geetestservice.html" class="tsd-signature-type">GeetestService</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Geetest<wbr>Service<span class="tsd-signature-symbol">(</span>geetestOptionsProvider<span class="tsd-signature-symbol">: </span><a href="geetestoptionsprovider.html" class="tsd-signature-type">GeetestOptionsProvider</a>, httpService<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HttpService</span>, bypassStatusProvider<span class="tsd-signature-symbol">: </span><a href="bypassstatusprovider.html" class="tsd-signature-type">BypassStatusProvider</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="geetestservice.html" class="tsd-signature-type">GeetestService</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/5522f0a/src/lib/services/geetest.service.ts#L26">lib/services/geetest.service.ts:26</a></li>
+									<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/bbddafa/src/lib/services/geetest.service.ts#L25">lib/services/geetest.service.ts:25</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -139,6 +140,9 @@
 								<li>
 									<h5>httpService: <span class="tsd-signature-type">HttpService</span></h5>
 								</li>
+								<li>
+									<h5>bypassStatusProvider: <a href="bypassstatusprovider.html" class="tsd-signature-type">BypassStatusProvider</a></h5>
+								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="geetestservice.html" class="tsd-signature-type">GeetestService</a></h4>
 						</li>
@@ -148,12 +152,22 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="bypassstatusprovider" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> bypass<wbr>Status<wbr>Provider</h3>
+					<div class="tsd-signature tsd-kind-icon">bypass<wbr>Status<wbr>Provider<span class="tsd-signature-symbol">:</span> <a href="bypassstatusprovider.html" class="tsd-signature-type">BypassStatusProvider</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/bbddafa/src/lib/services/geetest.service.ts#L30">lib/services/geetest.service.ts:30</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="geetestoptionsprovider" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> geetest<wbr>Options<wbr>Provider</h3>
 					<div class="tsd-signature tsd-kind-icon">geetest<wbr>Options<wbr>Provider<span class="tsd-signature-symbol">:</span> <a href="geetestoptionsprovider.html" class="tsd-signature-type">GeetestOptionsProvider</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/5522f0a/src/lib/services/geetest.service.ts#L29">lib/services/geetest.service.ts:29</a></li>
+							<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/bbddafa/src/lib/services/geetest.service.ts#L28">lib/services/geetest.service.ts:28</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -163,7 +177,7 @@
 					<div class="tsd-signature tsd-kind-icon">http<wbr>Service<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">HttpService</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/5522f0a/src/lib/services/geetest.service.ts#L30">lib/services/geetest.service.ts:30</a></li>
+							<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/bbddafa/src/lib/services/geetest.service.ts#L29">lib/services/geetest.service.ts:29</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -173,17 +187,7 @@
 					<div class="tsd-signature tsd-kind-icon">logger<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Logger</span><span class="tsd-signature-symbol"> = new Logger()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/5522f0a/src/lib/services/geetest.service.ts#L26">lib/services/geetest.service.ts:26</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
-					<a name="api_url" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> API_<wbr>URL</h3>
-					<div class="tsd-signature tsd-kind-icon">API_<wbr>URL<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;http://api.geetest.com&quot;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/5522f0a/src/lib/services/geetest.service.ts#L18">lib/services/geetest.service.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/bbddafa/src/lib/services/geetest.service.ts#L25">lib/services/geetest.service.ts:25</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -193,7 +197,7 @@
 					<div class="tsd-signature tsd-kind-icon">HTTP_<wbr>TIMEOUT_<wbr>DEFAULT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 5000</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/5522f0a/src/lib/services/geetest.service.ts#L23">lib/services/geetest.service.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/bbddafa/src/lib/services/geetest.service.ts#L22">lib/services/geetest.service.ts:22</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -203,7 +207,7 @@
 					<div class="tsd-signature tsd-kind-icon">JSON_<wbr>FORMAT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;1&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/5522f0a/src/lib/services/geetest.service.ts#L21">lib/services/geetest.service.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/bbddafa/src/lib/services/geetest.service.ts#L20">lib/services/geetest.service.ts:20</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -213,27 +217,7 @@
 					<div class="tsd-signature tsd-kind-icon">NEW_<wbr>CAPTCHA<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = true</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/5522f0a/src/lib/services/geetest.service.ts#L22">lib/services/geetest.service.ts:22</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
-					<a name="register_url" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> REGISTER_<wbr>URL</h3>
-					<div class="tsd-signature tsd-kind-icon">REGISTER_<wbr>URL<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;/register.php&quot;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/5522f0a/src/lib/services/geetest.service.ts#L19">lib/services/geetest.service.ts:19</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
-					<a name="validate_url" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> VALIDATE_<wbr>URL</h3>
-					<div class="tsd-signature tsd-kind-icon">VALIDATE_<wbr>URL<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;/validate.php&quot;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/5522f0a/src/lib/services/geetest.service.ts#L20">lib/services/geetest.service.ts:20</a></li>
+							<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/bbddafa/src/lib/services/geetest.service.ts#L21">lib/services/geetest.service.ts:21</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -243,7 +227,7 @@
 					<div class="tsd-signature tsd-kind-icon">VERSION<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;node-express:3.1.1&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/5522f0a/src/lib/services/geetest.service.ts#L24">lib/services/geetest.service.ts:24</a></li>
+							<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/bbddafa/src/lib/services/geetest.service.ts#L23">lib/services/geetest.service.ts:23</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -260,7 +244,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/5522f0a/src/lib/services/geetest.service.ts#L153">lib/services/geetest.service.ts:153</a></li>
+									<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/bbddafa/src/lib/services/geetest.service.ts#L206">lib/services/geetest.service.ts:206</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -277,16 +261,16 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
-					<a name="checkparam" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> check<wbr>Param</h3>
+					<a name="failvalidate" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> fail<wbr>Validate</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">check<wbr>Param<span class="tsd-signature-symbol">(</span>challenge<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, validate<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, seccode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon">fail<wbr>Validate<span class="tsd-signature-symbol">(</span>challenge<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, validate<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, seccode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/geetestregisterresultinterface.html" class="tsd-signature-type">GeetestRegisterResultInterface</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/5522f0a/src/lib/services/geetest.service.ts#L131">lib/services/geetest.service.ts:131</a></li>
+									<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/bbddafa/src/lib/services/geetest.service.ts#L128">lib/services/geetest.service.ts:128</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -301,7 +285,24 @@
 									<h5>seccode: <span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/geetestregisterresultinterface.html" class="tsd-signature-type">GeetestRegisterResultInterface</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="localregister" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> local<wbr>Register</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">local<wbr>Register<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/geetestregisterresultinterface.html" class="tsd-signature-type">GeetestRegisterResultInterface</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/bbddafa/src/lib/services/geetest.service.ts#L150">lib/services/geetest.service.ts:150</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/geetestregisterresultinterface.html" class="tsd-signature-type">GeetestRegisterResultInterface</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -315,7 +316,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/5522f0a/src/lib/services/geetest.service.ts#L230">lib/services/geetest.service.ts:230</a></li>
+									<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/bbddafa/src/lib/services/geetest.service.ts#L286">lib/services/geetest.service.ts:286</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -338,7 +339,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/5522f0a/src/lib/services/geetest.service.ts#L33">lib/services/geetest.service.ts:33</a></li>
+									<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/bbddafa/src/lib/services/geetest.service.ts#L59">lib/services/geetest.service.ts:59</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -361,7 +362,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/5522f0a/src/lib/services/geetest.service.ts#L189">lib/services/geetest.service.ts:189</a></li>
+									<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/bbddafa/src/lib/services/geetest.service.ts#L242">lib/services/geetest.service.ts:242</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -374,17 +375,17 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
 					<a name="requestvalidate" class="tsd-anchor"></a>
-					<h3>request<wbr>Validate</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> request<wbr>Validate</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
 						<li class="tsd-signature tsd-kind-icon">request<wbr>Validate<span class="tsd-signature-symbol">(</span>challenge<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, seccode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, params<span class="tsd-signature-symbol">: </span><a href="../interfaces/geetestregisterparamsinterface.html" class="tsd-signature-type">GeetestRegisterParamsInterface</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/5522f0a/src/lib/services/geetest.service.ts#L47">lib/services/geetest.service.ts:47</a></li>
+									<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/bbddafa/src/lib/services/geetest.service.ts#L157">lib/services/geetest.service.ts:157</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -403,17 +404,49 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
 					<a name="successvalidate" class="tsd-anchor"></a>
-					<h3>success<wbr>Validate</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> success<wbr>Validate</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
 						<li class="tsd-signature tsd-kind-icon">success<wbr>Validate<span class="tsd-signature-symbol">(</span>challenge<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, validate<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, seccode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, params<span class="tsd-signature-symbol">: </span><a href="../interfaces/geetestregisterparamsinterface.html" class="tsd-signature-type">GeetestRegisterParamsInterface</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/geetestregisterresultinterface.html" class="tsd-signature-type">GeetestRegisterResultInterface</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/5522f0a/src/lib/services/geetest.service.ts#L94">lib/services/geetest.service.ts:94</a></li>
+									<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/bbddafa/src/lib/services/geetest.service.ts#L91">lib/services/geetest.service.ts:91</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>challenge: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>validate: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>seccode: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>params: <a href="../interfaces/geetestregisterparamsinterface.html" class="tsd-signature-type">GeetestRegisterParamsInterface</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/geetestregisterresultinterface.html" class="tsd-signature-type">GeetestRegisterResultInterface</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="validate" class="tsd-anchor"></a>
+					<h3>validate</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">validate<span class="tsd-signature-symbol">(</span>challenge<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, validate<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, seccode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, params<span class="tsd-signature-symbol">: </span><a href="../interfaces/geetestregisterparamsinterface.html" class="tsd-signature-type">GeetestRegisterParamsInterface</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/geetestregisterresultinterface.html" class="tsd-signature-type">GeetestRegisterResultInterface</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/bbddafa/src/lib/services/geetest.service.ts#L78">lib/services/geetest.service.ts:78</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -436,6 +469,35 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="checkparam" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> check<wbr>Param</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">check<wbr>Param<span class="tsd-signature-symbol">(</span>challenge<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, validate<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, seccode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/bbddafa/src/lib/services/geetest.service.ts#L44">lib/services/geetest.service.ts:44</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>challenge: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>validate: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>seccode: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
 					<a name="encode" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> encode</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
@@ -445,7 +507,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/5522f0a/src/lib/services/geetest.service.ts#L146">lib/services/geetest.service.ts:146</a></li>
+									<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/bbddafa/src/lib/services/geetest.service.ts#L37">lib/services/geetest.service.ts:37</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -471,7 +533,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/5522f0a/src/lib/services/geetest.service.ts#L142">lib/services/geetest.service.ts:142</a></li>
+									<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/bbddafa/src/lib/services/geetest.service.ts#L33">lib/services/geetest.service.ts:33</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -520,6 +582,9 @@
 								<a href="geetestservice.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="geetestservice.html#bypassstatusprovider" class="tsd-kind-icon">bypass<wbr>Status<wbr>Provider</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="geetestservice.html#geetestoptionsprovider" class="tsd-kind-icon">geetest<wbr>Options<wbr>Provider</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
@@ -527,9 +592,6 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="geetestservice.html#logger" class="tsd-kind-icon">logger</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static">
-								<a href="geetestservice.html#api_url" class="tsd-kind-icon">API_<wbr>URL</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static">
 								<a href="geetestservice.html#http_timeout_default" class="tsd-kind-icon">HTTP_<wbr>TIMEOUT_<wbr>DEFAULT</a>
@@ -541,19 +603,16 @@
 								<a href="geetestservice.html#new_captcha" class="tsd-kind-icon">NEW_<wbr>CAPTCHA</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static">
-								<a href="geetestservice.html#register_url" class="tsd-kind-icon">REGISTER_<wbr>URL</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static">
-								<a href="geetestservice.html#validate_url" class="tsd-kind-icon">VALIDATE_<wbr>URL</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static">
 								<a href="geetestservice.html#version" class="tsd-kind-icon">VERSION</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 								<a href="geetestservice.html#buildregisterresult" class="tsd-kind-icon">build<wbr>Register<wbr>Result</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
-								<a href="geetestservice.html#checkparam" class="tsd-kind-icon">check<wbr>Param</a>
+								<a href="geetestservice.html#failvalidate" class="tsd-kind-icon">fail<wbr>Validate</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="geetestservice.html#localregister" class="tsd-kind-icon">local<wbr>Register</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 								<a href="geetestservice.html#log" class="tsd-kind-icon">log</a>
@@ -564,11 +623,17 @@
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 								<a href="geetestservice.html#requestregister" class="tsd-kind-icon">request<wbr>Register</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 								<a href="geetestservice.html#requestvalidate" class="tsd-kind-icon">request<wbr>Validate</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 								<a href="geetestservice.html#successvalidate" class="tsd-kind-icon">success<wbr>Validate</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="geetestservice.html#validate" class="tsd-kind-icon">validate</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+								<a href="geetestservice.html#checkparam" class="tsd-kind-icon">check<wbr>Param</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
 								<a href="geetestservice.html#encode" class="tsd-kind-icon">encode</a>
@@ -581,10 +646,10 @@
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface">
-						<a href="../interfaces/geetestasyncoptions.html" class="tsd-kind-icon">Geetest<wbr>Async<wbr>Options</a>
+						<a href="../interfaces/geetestmoduleasyncoptions.html" class="tsd-kind-icon">Geetest<wbr>Module<wbr>Async<wbr>Options</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="../interfaces/geetestoptions.html" class="tsd-kind-icon">Geetest<wbr>Options</a>
+						<a href="../interfaces/geetestmoduleoptions.html" class="tsd-kind-icon">Geetest<wbr>Module<wbr>Options</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="../interfaces/geetestoptionsfactory.html" class="tsd-kind-icon">Geetest<wbr>Options<wbr>Factory</a>
