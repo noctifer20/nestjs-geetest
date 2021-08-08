@@ -22,6 +22,6 @@ test.serial('should have default status as fail', (t) => {
 });
 
 test.serial('status change status with setter', (t) => {
-  bypassStatusProvider.bypassStatus = 'success'
+  bypassStatusProvider.bypassStatus = 'success';
   t.deepEqual(bypassStatusProvider.bypassStatus, 'success');
 });
