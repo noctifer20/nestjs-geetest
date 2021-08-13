@@ -10,6 +10,6 @@ export interface GeetestModuleAsyncOptions
   useExisting?: Type<GeetestOptionsFactory>;
   useClass?: Type<GeetestOptionsFactory>;
   useFactory?: (
-    ...args: unknown[]
+    ...args: never[]
   ) => Promise<GeetestModuleOptions> | GeetestModuleOptions;
 }
