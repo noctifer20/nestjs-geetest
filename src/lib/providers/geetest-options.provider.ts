@@ -9,7 +9,12 @@ export class GeetestOptionsProvider {
 
   constructor(@Inject(GEETEST_OPTIONS) geetestOptions: GeetestModuleOptions) {
     this.options = {
-      BYPASS_URL: 'https://bypass.geetest.com/v1/bypass_status.php',
+      bypassConfig: {
+        url: 'https://bypass.geetest.com/v1/bypass_status.php',
+        policy: 'onDemand',
+        ...(geetestOptions.bypassConfig ?? {}),
+      },
+
       API_SERVER: 'https://api.geetest.com',
       REGISTER_URL: '/register.php',
       VALIDATE_URL: '/validate.php',
@@ -20,7 +25,8 @@ export class GeetestOptionsProvider {
       GEETEST_VALIDATE: 'geetest_validate',
       GEETEST_SECCODE: 'geetest_seccode',
       GEETEST_SERVER_STATUS_SESSION_KEY: 'gt_server_status',
-      DEBUG: false,
+
+      debug: false,
 
       ...geetestOptions,
     };

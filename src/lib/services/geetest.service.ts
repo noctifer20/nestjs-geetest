@@ -15,6 +15,8 @@ import {
 } from '../interfaces';
 import { BypassStatusProvider, GeetestOptionsProvider } from '../providers';
 
+import { BypassPollingService } from './bypass-polling.service';
+
 @Injectable()
 export class GeetestService {
   static JSON_FORMAT = '1';
@@ -27,7 +29,8 @@ export class GeetestService {
   constructor(
     private readonly geetestOptionsProvider: GeetestOptionsProvider,
     private readonly httpService: HttpService,
-    private readonly bypassStatusProvider: BypassStatusProvider
+    private readonly bypassStatusProvider: BypassStatusProvider,
+    private readonly bypassPollingService: BypassPollingService
   ) {}
 
   private static randomString(size = 21) {
@@ -61,8 +64,20 @@ export class GeetestService {
       `register(): digestmod=${params.digestmod} bypassStatus=${this.bypassStatusProvider.bypassStatus}`
     );
 
-    if (this.bypassStatusProvider.bypassStatus === 'fail')
-      return this.localRegister();
+    let bypassStatus = this.bypassStatusProvider.bypassStatus;
+
+    if (this.geetestOptionsProvider.options.bypassConfig.policy === 'onDemand')
+      try {
+        this.log('onDemand bypass status check');
+        await lastValueFrom(this.bypassPollingService.checkBypassStatus());
+        bypassStatus = 1;
+        this.log('onDemand bypass status check: success');
+      } catch {
+        bypassStatus = 0;
+        this.log('onDemand bypass status check: fail');
+      }
+
+    if (!bypassStatus) return this.localRegister();
 
     const originChallenge = await this.requestRegister(params);
     const libResult = this.buildRegisterResult(
@@ -81,7 +96,7 @@ export class GeetestService {
     seccode: string,
     params: GeetestRegisterParamsInterface
   ) {
-    if (this.bypassStatusProvider.bypassStatus === 'success') {
+    if (this.bypassStatusProvider.bypassStatus) {
       return this.successValidate(challenge, validate, seccode, params);
     } else {
       return this.failValidate(challenge, validate, seccode);
@@ -164,7 +179,7 @@ export class GeetestService {
       json_format: GeetestService.JSON_FORMAT,
       challenge: challenge,
       sdk: GeetestService.VERSION,
-      captchaid: this.geetestOptionsProvider.options.GEETEST_ID,
+      captchaid: this.geetestOptionsProvider.options.geetestId,
     });
     const validate_url =
       this.geetestOptionsProvider.options.API_SERVER +
@@ -214,7 +229,7 @@ export class GeetestService {
         status: 0,
         data: {
           success: 0,
-          gt: this.geetestOptionsProvider.options.GEETEST_ID,
+          gt: this.geetestOptionsProvider.options.geetestId,
           challenge: challenge,
           new_captcha: GeetestService.NEW_CAPTCHA,
         },
@@ -222,7 +237,7 @@ export class GeetestService {
       };
     } else {
       const challenge = GeetestService.encode(
-        originChallenge + this.geetestOptionsProvider.options.GEETEST_KEY,
+        originChallenge + this.geetestOptionsProvider.options.geetestId,
         digestmod
       );
 
@@ -230,7 +245,7 @@ export class GeetestService {
         status: 1,
         data: {
           success: 1,
-          gt: this.geetestOptionsProvider.options.GEETEST_ID,
+          gt: this.geetestOptionsProvider.options.geetestId,
           challenge: challenge,
           new_captcha: GeetestService.NEW_CAPTCHA,
         },
@@ -257,7 +272,7 @@ export class GeetestService {
           timeout: GeetestService.HTTP_TIMEOUT_DEFAULT,
           params: {
             ...params,
-            gt: this.geetestOptionsProvider.options.GEETEST_ID,
+            gt: this.geetestOptionsProvider.options.geetestId,
           },
         });
 
@@ -284,7 +299,7 @@ export class GeetestService {
   }
 
   private log(message: string) {
-    if (this.geetestOptionsProvider.options.DEBUG) {
+    if (this.geetestOptionsProvider.options.debug) {
       this.logger.debug(message);
     }
   }

@@ -18,10 +18,10 @@ test('should be defined', (t) => {
 });
 
 test.serial('should have default status as fail', (t) => {
-  t.deepEqual(bypassStatusProvider.bypassStatus, 'fail');
+  t.deepEqual(bypassStatusProvider.bypassStatus, 0);
 });
 
 test.serial('status change status with setter', (t) => {
-  bypassStatusProvider.bypassStatus = 'success';
-  t.deepEqual(bypassStatusProvider.bypassStatus, 'success');
+  bypassStatusProvider.bypassStatus = 1;
+  t.deepEqual(bypassStatusProvider.bypassStatus, 1);
 });

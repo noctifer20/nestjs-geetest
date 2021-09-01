@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class BypassStatusProvider {
-  private value: 'success' | 'fail' = 'fail';
+  private value: 1 | 0 = 0;
 
   get bypassStatus() {
     return this.value;

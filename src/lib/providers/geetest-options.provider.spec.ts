@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import test from 'ava';
 
 import { GEETEST_OPTIONS } from '../geetest.constants';
+import { GeetestModuleOptions } from '../interfaces';
 
 import { GeetestOptionsProvider } from './geetest-options.provider';
 
@@ -13,9 +14,9 @@ test.before(async () => {
       {
         provide: GEETEST_OPTIONS,
         useValue: {
-          GEETEST_ID: 'GEETEST_ID',
-          GEETEST_KEY: 'GEETEST_KEY',
-        },
+          geetestId: 'GEETEST_ID',
+          geetestKey: 'GEETEST_KEY',
+        } as GeetestModuleOptions,
       },
       GeetestOptionsProvider,
     ],
@@ -32,9 +33,12 @@ test('should be defined', (t) => {
 
 test('should export options with default values', (t) => {
   t.deepEqual(geetestOptionsProvider.options, {
-    GEETEST_ID: 'GEETEST_ID',
-    GEETEST_KEY: 'GEETEST_KEY',
-    BYPASS_URL: 'https://bypass.geetest.com/v1/bypass_status.php',
+    geetestId: 'GEETEST_ID',
+    geetestKey: 'GEETEST_KEY',
+    bypassConfig: {
+      url: 'https://bypass.geetest.com/v1/bypass_status.php',
+      policy: 'onDemand',
+    },
     API_SERVER: 'https://api.geetest.com',
     REGISTER_URL: '/register.php',
     VALIDATE_URL: '/validate.php',
@@ -45,6 +49,6 @@ test('should export options with default values', (t) => {
     GEETEST_VALIDATE: 'geetest_validate',
     GEETEST_SECCODE: 'geetest_seccode',
     GEETEST_SERVER_STATUS_SESSION_KEY: 'gt_server_status',
-    DEBUG: false,
+    debug: false,
   });
 });

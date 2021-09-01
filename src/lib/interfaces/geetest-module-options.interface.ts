@@ -1,8 +1,18 @@
 export interface GeetestModuleOptions {
-  GEETEST_ID: string;
-  GEETEST_KEY: string;
+  geetestId: string;
+  geetestKey: string;
 
-  BYPASS_URL?: string;
+  bypassConfig?:
+    | {
+        url?: string;
+        policy?: 'onDemand';
+      }
+    | {
+        url?: string;
+        policy: 'polling';
+        frequency: number;
+      };
+
   API_SERVER?: string;
   REGISTER_URL?: string;
   VALIDATE_URL?: string;
@@ -13,5 +23,5 @@ export interface GeetestModuleOptions {
   GEETEST_VALIDATE?: string;
   GEETEST_SECCODE?: string;
   GEETEST_SERVER_STATUS_SESSION_KEY?: string;
-  DEBUG?: boolean;
+  debug?: boolean;
 }
