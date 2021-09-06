@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.3](https://github.com/noctifer20/nestjs-geetest/compare/v1.1.2...v1.1.3) (2021-09-06)
+
+
+### Bug Fixes
+
+* **config:** remove reset-hard from prepare-release ([e9e5a02](https://github.com/noctifer20/nestjs-geetest/commit/e9e5a020f3dd3c5a8c900f01eeebe1dfff467799))
+* **tests:** add unit test bypass checking sync flow configuration ([44ee56e](https://github.com/noctifer20/nestjs-geetest/commit/44ee56e734a89cff66be14312fdcfb239e8a1475))
+
 ### [1.1.2](https://github.com/noctifer20/nestjs-geetest/compare/v1.1.0...v1.1.2) (2021-09-06)
 
 
