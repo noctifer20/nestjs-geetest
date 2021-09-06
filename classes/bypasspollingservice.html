@@ -91,12 +91,15 @@
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="bypasspollingservice.html#cancelsource" class="tsd-kind-icon">cancel<wbr>Source</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="bypasspollingservice.html#geetestoptionsprovider" class="tsd-kind-icon">geetest<wbr>Options<wbr>Provider</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="bypasspollingservice.html#httpservice" class="tsd-kind-icon">http<wbr>Service</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="bypasspollingservice.html#logger" class="tsd-kind-icon">logger</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="bypasspollingservice.html#pollinginterval" class="tsd-kind-icon">polling<wbr>Interval</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="bypasspollingservice.html#checkbypassstatus" class="tsd-kind-icon">check<wbr>Bypass<wbr>Status</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="bypasspollingservice.html#log" class="tsd-kind-icon">log</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="bypasspollingservice.html#startpolling" class="tsd-kind-icon">start<wbr>Polling</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="bypasspollingservice.html#stoppolling" class="tsd-kind-icon">stop<wbr>Polling</a></li>
 							</ul>
@@ -116,7 +119,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/c23364e/src/lib/services/bypass-polling.service.ts#L11">lib/services/bypass-polling.service.ts:11</a></li>
+									<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/e9e5a02/src/lib/services/bypass-polling.service.ts#L12">lib/services/bypass-polling.service.ts:12</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -144,7 +147,7 @@
 					<div class="tsd-signature tsd-kind-icon">bypass<wbr>Status<wbr>Provider<span class="tsd-signature-symbol">:</span> <a href="bypassstatusprovider.html" class="tsd-signature-type">BypassStatusProvider</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/c23364e/src/lib/services/bypass-polling.service.ts#L15">lib/services/bypass-polling.service.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/e9e5a02/src/lib/services/bypass-polling.service.ts#L16">lib/services/bypass-polling.service.ts:16</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -154,7 +157,7 @@
 					<div class="tsd-signature tsd-kind-icon">cancel<wbr>Source<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CancelTokenSource</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/c23364e/src/lib/services/bypass-polling.service.ts#L10">lib/services/bypass-polling.service.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/e9e5a02/src/lib/services/bypass-polling.service.ts#L10">lib/services/bypass-polling.service.ts:10</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -164,7 +167,7 @@
 					<div class="tsd-signature tsd-kind-icon">geetest<wbr>Options<wbr>Provider<span class="tsd-signature-symbol">:</span> <a href="geetestoptionsprovider.html" class="tsd-signature-type">GeetestOptionsProvider</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/c23364e/src/lib/services/bypass-polling.service.ts#L14">lib/services/bypass-polling.service.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/e9e5a02/src/lib/services/bypass-polling.service.ts#L15">lib/services/bypass-polling.service.ts:15</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -174,7 +177,17 @@
 					<div class="tsd-signature tsd-kind-icon">http<wbr>Service<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">HttpService</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/c23364e/src/lib/services/bypass-polling.service.ts#L16">lib/services/bypass-polling.service.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/e9e5a02/src/lib/services/bypass-polling.service.ts#L17">lib/services/bypass-polling.service.ts:17</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="logger" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> logger</h3>
+					<div class="tsd-signature tsd-kind-icon">logger<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Logger</span><span class="tsd-signature-symbol"> = new Logger()</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/e9e5a02/src/lib/services/bypass-polling.service.ts#L12">lib/services/bypass-polling.service.ts:12</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -184,7 +197,7 @@
 					<div class="tsd-signature tsd-kind-icon">polling<wbr>Interval<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Subscription</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/c23364e/src/lib/services/bypass-polling.service.ts#L11">lib/services/bypass-polling.service.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/e9e5a02/src/lib/services/bypass-polling.service.ts#L11">lib/services/bypass-polling.service.ts:11</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -192,19 +205,59 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="startpolling" class="tsd-anchor"></a>
-					<h3>start<wbr>Polling</h3>
+					<a name="checkbypassstatus" class="tsd-anchor"></a>
+					<h3>check<wbr>Bypass<wbr>Status</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">start<wbr>Polling<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">check<wbr>Bypass<wbr>Status<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">AxiosResponse</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{ </span>status<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">1</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">0</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/c23364e/src/lib/services/bypass-polling.service.ts#L19">lib/services/bypass-polling.service.ts:19</a></li>
+									<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/e9e5a02/src/lib/services/bypass-polling.service.ts#L26">lib/services/bypass-polling.service.ts:26</a></li>
 								</ul>
 							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">AxiosResponse</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{ </span>status<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">1</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">0</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="log" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> log</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">log<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/e9e5a02/src/lib/services/bypass-polling.service.ts#L20">lib/services/bypass-polling.service.ts:20</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>message: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="startpolling" class="tsd-anchor"></a>
+					<h3>start<wbr>Polling</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">start<wbr>Polling<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/e9e5a02/src/lib/services/bypass-polling.service.ts#L53">lib/services/bypass-polling.service.ts:53</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -218,7 +271,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/c23364e/src/lib/services/bypass-polling.service.ts#L49">lib/services/bypass-polling.service.ts:49</a></li>
+									<li>Defined in <a href="https://github.com/noctifer20/nestjs-geetest/blob/e9e5a02/src/lib/services/bypass-polling.service.ts#L69">lib/services/bypass-polling.service.ts:69</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -258,7 +311,16 @@
 								<a href="bypasspollingservice.html#httpservice" class="tsd-kind-icon">http<wbr>Service</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="bypasspollingservice.html#logger" class="tsd-kind-icon">logger</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="bypasspollingservice.html#pollinginterval" class="tsd-kind-icon">polling<wbr>Interval</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="bypasspollingservice.html#checkbypassstatus" class="tsd-kind-icon">check<wbr>Bypass<wbr>Status</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="bypasspollingservice.html#log" class="tsd-kind-icon">log</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="bypasspollingservice.html#startpolling" class="tsd-kind-icon">start<wbr>Polling</a>
@@ -284,6 +346,9 @@
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="geetestservice.html" class="tsd-kind-icon">Geetest<wbr>Service</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="geetestverifyguard.html" class="tsd-kind-icon">Geetest<wbr>Verify<wbr>Guard</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="../interfaces/geetestmoduleasyncoptions.html" class="tsd-kind-icon">Geetest<wbr>Module<wbr>Async<wbr>Options</a>
@@ -333,7 +398,6 @@
 				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
 			</ul>
 		</div>
