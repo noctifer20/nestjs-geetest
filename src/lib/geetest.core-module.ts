@@ -42,7 +42,7 @@ export class GeetestCoreModule
         BypassPollingService,
         GeetestVerifyGuard,
       ],
-      exports: [GeetestService, GeetestVerifyGuard],
+      exports: [GeetestService, GeetestOptionsProvider, GeetestVerifyGuard],
     };
   }
 
@@ -58,7 +58,7 @@ export class GeetestCoreModule
         BypassPollingService,
         GeetestVerifyGuard,
       ],
-      exports: [GeetestService, GeetestVerifyGuard],
+      exports: [GeetestService, GeetestOptionsProvider, GeetestVerifyGuard],
     };
   }
 
