@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.2](https://github.com/noctifer20/nestjs-geetest/compare/v1.1.0...v1.1.2) (2021-09-06)
+
+
+### Bug Fixes
+
+* **pipeline:** add husky .gitignore to fix pipeline ([9ffc378](https://github.com/noctifer20/nestjs-geetest/commit/9ffc3780d8d4eb225763b9b8cde25950200fb957))
+
 ## [1.1.0](https://github.com/noctifer20/nestjs-geetest/compare/v0.0.6...v1.1.0) (2021-09-06)
 
 
