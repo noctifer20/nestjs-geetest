@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.7](https://github.com/noctifer20/nestjs-geetest/compare/v1.1.6...v1.1.7) (2021-09-06)
+
+
+### Bug Fixes
+
+* **hotfix:** export guards ([2e1103d](https://github.com/noctifer20/nestjs-geetest/commit/2e1103dbb91d65117e98be80528ad3c191058373))
+
 ### [1.1.6](https://github.com/noctifer20/nestjs-geetest/compare/v1.1.5...v1.1.6) (2021-09-06)
 
 
