@@ -10,6 +10,7 @@ import {
 import { ModuleRef } from '@nestjs/core';
 
 import { GEETEST_OPTIONS } from './geetest.constants';
+import { GeetestVerifyGuard } from './guards/geetest-verify.guard';
 import {
   GeetestModuleAsyncOptions,
   GeetestModuleOptions,
@@ -39,8 +40,9 @@ export class GeetestCoreModule
         GeetestOptionsProvider,
         BypassStatusProvider,
         BypassPollingService,
+        GeetestVerifyGuard,
       ],
-      exports: [GeetestService],
+      exports: [GeetestService, GeetestVerifyGuard],
     };
   }
 
@@ -54,8 +56,9 @@ export class GeetestCoreModule
         GeetestOptionsProvider,
         BypassStatusProvider,
         BypassPollingService,
+        GeetestVerifyGuard,
       ],
-      exports: [GeetestService],
+      exports: [GeetestService, GeetestVerifyGuard],
     };
   }
 

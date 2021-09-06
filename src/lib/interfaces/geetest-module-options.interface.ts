@@ -13,15 +13,17 @@ export interface GeetestModuleOptions {
         frequency: number;
       };
 
-  API_SERVER?: string;
-  REGISTER_URL?: string;
-  VALIDATE_URL?: string;
-  JSON_FORMAT?: string;
-  HTTP_TIMEOUT_DEFAULT?: number;
-  VERSION?: string;
-  GEETEST_CHALLENGE?: string;
-  GEETEST_VALIDATE?: string;
-  GEETEST_SECCODE?: string;
-  GEETEST_SERVER_STATUS_SESSION_KEY?: string;
+  apiServer?: string;
+  registerUrl?: string;
+  validateUrl?: string;
+
+  httpTimeoutDefault?: number;
+
+  jsonFormat?: string;
+  version?: string;
+
+  geetestChallengeKey?: string;
+  geetestValidateKey?: string;
+  geetestSeccodeKey?: string;
   debug?: boolean;
 }

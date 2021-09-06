@@ -19,11 +19,6 @@ import { BypassPollingService } from './bypass-polling.service';
 
 @Injectable()
 export class GeetestService {
-  static JSON_FORMAT = '1';
-  static NEW_CAPTCHA = true;
-  static HTTP_TIMEOUT_DEFAULT = 5000;
-  static VERSION = 'node-express:3.1.1';
-
   private readonly logger = new Logger();
 
   constructor(
@@ -41,7 +36,10 @@ export class GeetestService {
     str: string,
     encoding: GeetestRegisterParamsInterface['digestmod']
   ) {
-    return Crypto.createHash(encoding).update(str).digest().toString('hex');
+    return Crypto.createHash(encoding as string)
+      .update(str)
+      .digest()
+      .toString('hex');
   }
 
   private static checkParam(
@@ -59,11 +57,7 @@ export class GeetestService {
     );
   }
 
-  public async register(params: GeetestRegisterParamsInterface) {
-    this.log(
-      `register(): digestmod=${params.digestmod} bypassStatus=${this.bypassStatusProvider.bypassStatus}`
-    );
-
+  private async getBypassStatus() {
     let bypassStatus = this.bypassStatusProvider.bypassStatus;
 
     if (this.geetestOptionsProvider.options.bypassConfig.policy === 'onDemand')
@@ -76,13 +70,29 @@ export class GeetestService {
         bypassStatus = 0;
         this.log('onDemand bypass status check: fail');
       }
+    return bypassStatus;
+  }
 
-    if (!bypassStatus) return this.localRegister();
+  public async register(params: GeetestRegisterParamsInterface) {
+    const defaultParams: GeetestRegisterParamsInterface = {
+      digestmod: 'md5',
+      json_format: this.geetestOptionsProvider.options.jsonFormat,
+      sdk: this.geetestOptionsProvider.options.version,
+      ...params,
+    };
+    this.log(
+      `register(): digestmod=${defaultParams.digestmod} bypassStatus=${this.bypassStatusProvider.bypassStatus}`
+    );
 
-    const originChallenge = await this.requestRegister(params);
+    if (!(await this.getBypassStatus())) return this.localRegister();
+
+    const originChallenge = await this.requestRegister(defaultParams);
+
+    this.log(`got originChallenge: ${originChallenge}`);
+
     const libResult = this.buildRegisterResult(
       originChallenge,
-      params.digestmod
+      defaultParams.digestmod
     );
 
     this.log(`register(): libResult=${JSON.stringify(libResult)}.`);
@@ -94,10 +104,18 @@ export class GeetestService {
     challenge: string,
     validate: string,
     seccode: string,
-    params: GeetestRegisterParamsInterface
+    params?: GeetestRegisterParamsInterface
   ) {
-    if (this.bypassStatusProvider.bypassStatus) {
-      return this.successValidate(challenge, validate, seccode, params);
+    const defaultParams: GeetestRegisterParamsInterface = {
+      digestmod: 'md5',
+      json_format: '1',
+      sdk: 'node-express:3.1.1',
+      t: '',
+      ...(params ?? {}),
+    };
+
+    if (await this.getBypassStatus()) {
+      return this.successValidate(challenge, validate, seccode, defaultParams);
     } else {
       return this.failValidate(challenge, validate, seccode);
     }
@@ -124,6 +142,9 @@ export class GeetestService {
       seccode,
       params
     );
+
+    this.log(`responseSeccode: ${responseSeccode}`);
+
     if (!responseSeccode) {
       return {
         status: 0,
@@ -176,14 +197,14 @@ export class GeetestService {
   ) {
     params = Object.assign(params, {
       seccode: seccode,
-      json_format: GeetestService.JSON_FORMAT,
+      json_format: this.geetestOptionsProvider.options.jsonFormat,
       challenge: challenge,
-      sdk: GeetestService.VERSION,
+      sdk: this.geetestOptionsProvider.options.version,
       captchaid: this.geetestOptionsProvider.options.geetestId,
     });
     const validate_url =
-      this.geetestOptionsProvider.options.API_SERVER +
-      this.geetestOptionsProvider.options.VALIDATE_URL;
+      this.geetestOptionsProvider.options.apiServer +
+      this.geetestOptionsProvider.options.validateUrl;
 
     this.log(
       `requestValidate(): url=${validate_url}, params=${JSON.stringify(
@@ -197,7 +218,7 @@ export class GeetestService {
         this.httpService.request<GeetestValidateResponseInterface>({
           url: validate_url,
           method: 'POST',
-          timeout: GeetestService.HTTP_TIMEOUT_DEFAULT,
+          timeout: this.geetestOptionsProvider.options.httpTimeoutDefault,
           data: qs.stringify(params),
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         });
@@ -231,13 +252,13 @@ export class GeetestService {
           success: 0,
           gt: this.geetestOptionsProvider.options.geetestId,
           challenge: challenge,
-          new_captcha: GeetestService.NEW_CAPTCHA,
+          new_captcha: true,
         },
         msg: 'Get the bypass status in the current cache as fail, locally generate a challenge, and follow-up processes in downtime mode ',
       };
     } else {
       const challenge = GeetestService.encode(
-        originChallenge + this.geetestOptionsProvider.options.geetestId,
+        originChallenge + this.geetestOptionsProvider.options.geetestKey,
         digestmod
       );
 
@@ -247,7 +268,7 @@ export class GeetestService {
           success: 1,
           gt: this.geetestOptionsProvider.options.geetestId,
           challenge: challenge,
-          new_captcha: GeetestService.NEW_CAPTCHA,
+          new_captcha: true,
         },
         msg: '',
       };
@@ -256,8 +277,8 @@ export class GeetestService {
 
   private async requestRegister(params: GeetestRegisterParamsInterface) {
     const registerUrl =
-      this.geetestOptionsProvider.options.API_SERVER +
-      this.geetestOptionsProvider.options.REGISTER_URL;
+      this.geetestOptionsProvider.options.apiServer +
+      this.geetestOptionsProvider.options.registerUrl;
 
     this.log(
       `requestRegister(): url=${registerUrl}, params=${JSON.stringify(params)}.`
@@ -269,7 +290,7 @@ export class GeetestService {
         this.httpService.request<GeetestRegisterResponseInterface>({
           url: registerUrl,
           method: 'GET',
-          timeout: GeetestService.HTTP_TIMEOUT_DEFAULT,
+          timeout: this.geetestOptionsProvider.options.httpTimeoutDefault,
           params: {
             ...params,
             gt: this.geetestOptionsProvider.options.geetestId,
