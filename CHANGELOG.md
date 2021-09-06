@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.11](https://github.com/noctifer20/nestjs-geetest/compare/v1.1.10...v1.1.11) (2021-09-06)
+
+
+### Bug Fixes
+
+* **config:** remove npmrc ([85fd25d](https://github.com/noctifer20/nestjs-geetest/commit/85fd25d0a30d009fa1de54d5553ebf9bd69e306e))
+
 ### [1.1.10](https://github.com/noctifer20/nestjs-geetest/compare/v1.1.9...v1.1.10) (2021-09-06)
 
 
