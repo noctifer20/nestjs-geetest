@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.4](https://github.com/noctifer20/nestjs-geetest/compare/v1.1.3...v1.1.4) (2021-09-06)
+
+
+### Bug Fixes
+
+* **confg:** change npm publish to yarn publish ([02716f5](https://github.com/noctifer20/nestjs-geetest/commit/02716f56134e5cfcd03bc1d24a46364c73992572))
+
 ### [1.1.3](https://github.com/noctifer20/nestjs-geetest/compare/v1.1.2...v1.1.3) (2021-09-06)
 
 
