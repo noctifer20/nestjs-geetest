@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.6](https://github.com/noctifer20/nestjs-geetest/compare/v1.1.5...v1.1.6) (2021-09-06)
+
+
+### Bug Fixes
+
+* **pipeline:** add env variable NPM_CONFIG_USERCONFIG for pipeline ([56d04fd](https://github.com/noctifer20/nestjs-geetest/commit/56d04fda84bef37605647eb6fc4686c71f494af9))
+
 ### [1.1.5](https://github.com/noctifer20/nestjs-geetest/compare/v1.1.4...v1.1.5) (2021-09-06)
 
 
