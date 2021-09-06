@@ -24,6 +24,8 @@ jobs:
         with:
           cmd: publish
           auth-token: ${{ secrets.NPM_TOKEN }}
+        env:
+          NPM_CONFIG_USERCONFIG: ./npmrc
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
